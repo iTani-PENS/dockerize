@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  db:
+    container_name: db_itani
+    image: mariadb:alpine
+    restart: always
+    environment:
+      - MYSQL_HOST=localhost
+      - MYSQL_PORT=3306
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_DATABASE=itani
+    ports:
+      - "3300:3306"
+  sms-auth:
+    container_name: sms_auth_itani
+    image: node:10
+    restart: always
+    build: ./sms-auth
+    ports:
+      - "1000:3000"

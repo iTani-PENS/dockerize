@@ -18,5 +18,9 @@ services:
     image: node:10
     restart: always
     build: ./sms-auth
+    depends_on:
+      - db
+    links:
+      - db
     ports:
       - "1000:3000"
